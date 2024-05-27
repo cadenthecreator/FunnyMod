@@ -11,11 +11,12 @@ namespace TestMod;
 [BepInPlugin("com.author.testmod", "Test Mod", "0.1.0")]
 sealed class Plugin : BaseUnityPlugin
 {
-    bool init;
+    public static new ManualLogSource Logger;
+    bool IsInit;
 
     public void OnEnable()
     {
-        // Add hooks here
+        Logger = base.Logger;
         On.RainWorld.OnModsInit += OnModsInit;
     }
 
@@ -23,9 +24,8 @@ sealed class Plugin : BaseUnityPlugin
     {
         orig(self);
 
-        if (init) return;
-
-        init = true;
+        if (IsInit) return;
+        IsInit = true;
 
         // Initialize assets, your mod config, and anything that uses RainWorld here
         Logger.LogDebug("Hello world!");
