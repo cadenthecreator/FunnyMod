@@ -1,4 +1,5 @@
 ﻿using BepInEx;
+using BepInEx.Logging;
 using System.Security.Permissions;
 
 // Allows access to private members
